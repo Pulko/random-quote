@@ -7,7 +7,6 @@
   let loading = false
 
   let {
-    dateAdded,
     content,
     author,
     tags,
@@ -18,7 +17,6 @@
     const response = await fetch("https://api.quotable.io/random")
     const quote: QuoteType = await response.json()
 
-    dateAdded = quote.dateAdded
     author = quote.author
     tags = quote.tags
     content = quote.content
@@ -26,7 +24,7 @@
   }
 </script>
 
-<div class="text-emerald-900 w-1/2 p-12">
+<div class="text-emerald-900">
   <div class="flex mb-2">
     {#each tags as tag}
       <p class="px-2 py-1 bg-orange-600 text-white mr-2 rounded">{tag}</p>
@@ -49,7 +47,6 @@
 
   <div class="flex flex-col justify-between mt-2">
     <p class="text-md font-semibold">{author}</p>
-    <p class="text-sm">{new Date(dateAdded).toDateString()}</p>
   </div>
 </div>
 
